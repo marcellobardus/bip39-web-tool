@@ -1,44 +1,32 @@
 import React, { useState } from "react";
 
-import {
-  Container,
-  Form,
-  FormGroup,
-  ControlLabel,
-  FormControl,
-  InputNumber,
-} from "rsuite";
+import { Container, Form, FormGroup, ControlLabel, FormControl } from "rsuite";
 import Encryption from "../components/Encryption";
 
-import { hdkey } from "ethereumjs-wallet";
 
 import { encryptWithPublicKey } from "eth-crypto";
 
 export default function Encrypt() {
-  const [xpub, setXpub] = useState("");
-  const [keyId, setKeyId] = useState(0);
+  const [pubKey, setPubKey] = useState("");
   const [message, setMessage] = useState("");
 
   return (
     <Container>
       <Form fluid>
         <FormGroup>
-          <ControlLabel>Xpub</ControlLabel>
+          <ControlLabel>Pub Key</ControlLabel>
           <FormControl
             rows={5}
-            name="xpub"
+            name="pubkey"
             componentClass="textarea"
-            onChange={setXpub}
+            onChange={setPubKey}
           />
-          <FormGroup>
-            <ControlLabel>Key Id</ControlLabel>
-            <InputNumber onChange={setKeyId} />
-          </FormGroup>
+
           <FormGroup>
             <ControlLabel>Message</ControlLabel>
             <FormControl
               rows={5}
-              name="ciphered text"
+              name="message"
               componentClass="textarea"
               onChange={setMessage}
             />
@@ -47,14 +35,7 @@ export default function Encrypt() {
       </Form>
       <Encryption
         triggerFunction={() => {
-          const master = hdkey.fromExtendedKey(xpub);
-          const pub = master
-            .deriveChild(keyId)
-            .getWallet()
-            .getPublicKey()
-            .toString("hex");
-
-          return encryptWithPublicKey(pub, message).then((sec) =>
+          return encryptWithPublicKey(pubKey, message).then((sec) =>
             btoa(JSON.stringify(sec))
           );
         }}

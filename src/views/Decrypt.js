@@ -1,40 +1,27 @@
 import React, { useState } from "react";
 
-import {
-  Form,
-  FormGroup,
-  FormControl,
-  ControlLabel,
-  Container,
-  InputNumber,
-} from "rsuite";
+import { Form, FormGroup, FormControl, ControlLabel, Container } from "rsuite";
 import Decryption from "../components/Decryption";
 
-import { hdkey } from "ethereumjs-wallet";
-
-import { decryptWithPrivateKey, publicKeyByPrivateKey } from "eth-crypto";
+import { decryptWithPrivateKey } from "eth-crypto";
 
 export default function Decrypt() {
-  const [xpriv, setXpriv] = useState("");
-  const [keyId, setKeyId] = useState(0);
+  const [privKey, setPrivKey] = useState("");
   const [cipheredText, setCipheredText] = useState("");
 
   return (
     <Container>
       <Form fluid>
         <FormGroup>
-          <ControlLabel>Xpriv</ControlLabel>
+          <ControlLabel>Priv Key</ControlLabel>
           <FormControl
             rows={5}
-            name="xpriv"
+            name="privkey"
             componentClass="textarea"
-            onChange={setXpriv}
+            onChange={setPrivKey}
           />
         </FormGroup>
-        <FormGroup>
-          <ControlLabel>Key Id</ControlLabel>
-          <InputNumber onChange={setKeyId} />
-        </FormGroup>
+
         <FormGroup>
           <ControlLabel>Ciphered text</ControlLabel>
           <FormControl
@@ -47,19 +34,6 @@ export default function Decrypt() {
       </Form>
       <Decryption
         triggerFunction={() => {
-          const master = hdkey.fromExtendedKey(xpriv);
-          const privKey =
-            "0x" +
-            master
-              .deriveChild(keyId)
-              .getWallet()
-              .getPrivateKey()
-              .toString("hex");
-
-          const pub = publicKeyByPrivateKey(privKey);
-
-          console.log(pub);
-
           const decoded = JSON.parse(atob(cipheredText));
           return decryptWithPrivateKey(privKey, decoded);
         }}

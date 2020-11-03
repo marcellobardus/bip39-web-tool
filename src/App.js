@@ -10,6 +10,8 @@ import AesEncrypt from "./views/AesEncrypt";
 import Decrypt from "./views/Decrypt";
 import Encrypt from "./views/Encrypt";
 
+import Derivate from "./views/Derivate";
+
 function App() {
   return (
     <Router>
@@ -24,10 +26,13 @@ function App() {
         <Route path="/aes-encrypt">
           <AesEncrypt />
         </Route>
-        <Route path="/">
+        <Route path="/ecdsa-decrypt">
           <Decrypt />
         </Route>
-        <Route path="/ecdsa-decrypt">
+        <Route path="/derivate">
+          <Derivate />
+        </Route>
+        <Route path="/">
           <Decrypt />
         </Route>
       </Switch>
