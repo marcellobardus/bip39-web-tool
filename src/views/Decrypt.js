@@ -8,6 +8,11 @@ import {
   Container,
   InputNumber,
 } from "rsuite";
+import Decryption from "../components/Decryption";
+
+import { hdkey } from "ethereumjs-wallet";
+
+import { decryptWithPrivateKey, publicKeyByPrivateKey } from "eth-crypto";
 
 export default function Decrypt() {
   const [xpriv, setXpriv] = useState("");
@@ -19,11 +24,16 @@ export default function Decrypt() {
       <Form fluid>
         <FormGroup>
           <ControlLabel>Xpriv</ControlLabel>
-          <FormControl rows={5} name="xpriv" componentClass="textarea" />
+          <FormControl
+            rows={5}
+            name="xpriv"
+            componentClass="textarea"
+            onChange={setXpriv}
+          />
         </FormGroup>
         <FormGroup>
           <ControlLabel>Key Id</ControlLabel>
-          <InputNumber />
+          <InputNumber onChange={setKeyId} />
         </FormGroup>
         <FormGroup>
           <ControlLabel>Ciphered text</ControlLabel>
@@ -31,9 +41,29 @@ export default function Decrypt() {
             rows={5}
             name="ciphered text"
             componentClass="textarea"
+            onChange={setCipheredText}
           />
         </FormGroup>
       </Form>
+      <Decryption
+        triggerFunction={() => {
+          const master = hdkey.fromExtendedKey(xpriv);
+          const privKey =
+            "0x" +
+            master
+              .deriveChild(keyId)
+              .getWallet()
+              .getPrivateKey()
+              .toString("hex");
+
+          const pub = publicKeyByPrivateKey(privKey);
+
+          console.log(pub);
+
+          const decoded = JSON.parse(atob(cipheredText));
+          return decryptWithPrivateKey(privKey, decoded);
+        }}
+      />
     </Container>
   );
 }

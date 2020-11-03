@@ -10,13 +10,16 @@ export default function Navigation() {
         <Navbar.Body>
           <Nav>
             <Nav.Item eventKey="1" icon={<Icon icon="eye-slash" />}>
-              <Link to={"/encrypt"}> Encrypt </Link>
+              <Link to={"/ecdsa-encrypt"}> ECDSA-Encrypt </Link>
             </Nav.Item>
             <Nav.Item eventKey="2" icon={<Icon icon="eye" />}>
-              <Link to={"/decrypt"}> Decrypt </Link>
+              <Link to={"/ecdsa-decrypt"}> ECDSA-Decrypt </Link>
             </Nav.Item>
             <Nav.Item eventKey="3" icon={<Icon icon="eye" />}>
-              <Link to={"/aes-decrypt"}> Aes Decrypt </Link>
+              <Link to={"/aes-decrypt"}> AES-Decrypt </Link>
+            </Nav.Item>
+            <Nav.Item eventKey="4" icon={<Icon icon="eye" />}>
+              <Link to={"/aes-encrypt"}> AES-Encrypt </Link>
             </Nav.Item>
           </Nav>
         </Navbar.Body>

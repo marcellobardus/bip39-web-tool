@@ -11,6 +11,7 @@
     "crypto-js": "^4.0.0",
     "eth-crypto": "^1.8.0",
     "ethereumjs-wallet": "^1.0.1",
+    "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
