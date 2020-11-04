@@ -4,6 +4,7 @@ import { Form, FormGroup, FormControl, ControlLabel, Container } from "rsuite";
 import Decryption from "../components/Decryption";
 
 import { decryptWithPrivateKey } from "eth-crypto";
+import ScanButton from "../components/ScanButton";
 
 export default function Decrypt() {
   const [privKey, setPrivKey] = useState("");
@@ -13,7 +14,7 @@ export default function Decrypt() {
     <Container>
       <Form fluid>
         <FormGroup>
-          <ControlLabel>Priv Key</ControlLabel>
+          <ControlLabel>PrivKey</ControlLabel>
           <FormControl
             rows={5}
             name="privkey"
@@ -29,6 +30,12 @@ export default function Decrypt() {
             name="ciphered text"
             componentClass="textarea"
             onChange={setCipheredText}
+            value={cipheredText}
+          />
+          <ScanButton
+            onScan={(result) => {
+              setCipheredText(result);
+            }}
           />
         </FormGroup>
       </Form>

@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Modal, Button, Alert } from "rsuite";
+import QrCode from "qrcode.react";
+
+import DownloadPlainText from "./DownloadPlainText";
+import DownloadQrCode from "./DownloadQrCode";
 
 export default function Encryption(props) {
   const [showModal, setShowModal] = useState(false);
@@ -45,9 +49,28 @@ export default function Encryption(props) {
           <Modal.Title>Encrypted message</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>{cipheredMessage}</p>
+          <p>
+            {cipheredMessage.length > 64
+              ? cipheredMessage.slice(0, 6) +
+                " ... " +
+                cipheredMessage.slice(
+                  cipheredMessage.length - 10,
+                  cipheredMessage.length
+                )
+              : cipheredMessage}
+          </p>
+          <br />
+          <QrCode value={cipheredMessage} size={256} id={"cipher-qr-encoded"} />
         </Modal.Body>
         <Modal.Footer>
+          <DownloadQrCode
+            elementId={"cipher-qr-encoded"}
+            filename={props.encyptionType + "-encrypted-file.png"}
+          />
+          <DownloadPlainText
+            filename={props.encyptionType + "-encrypted-file.txt"}
+            data={cipheredMessage}
+          />
           <Button
             onClick={() => {
               setShowModal(false);
@@ -64,4 +87,5 @@ export default function Encryption(props) {
 
 Encryption.propTypes = {
   triggerFunction: PropTypes.func,
+  encyptionType: PropTypes.string,
 };

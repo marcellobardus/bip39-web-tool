@@ -31,6 +31,7 @@ export default function AesEncrypt() {
         </FormGroup>
       </Form>
       <Encryption
+        encyptionType='aes'
         triggerFunction={() => {
           return AES.encrypt(message, encryptionKey).toString();
         }}

@@ -4,6 +4,7 @@ import { Container, Form, FormControl, FormGroup, ControlLabel } from "rsuite";
 import Decryption from "../components/Decryption";
 
 import { AES, enc } from "crypto-js";
+import ScanButton from "../components/ScanButton";
 
 export default function AesDecrypt() {
   const [cipheredMessage, setCipheredMessage] = useState("");
@@ -19,6 +20,12 @@ export default function AesDecrypt() {
             rows={5}
             name="ciphered message"
             componentClass="textarea"
+            value={cipheredMessage}
+          />
+          <ScanButton
+            onScan={(result) => {
+              setCipheredMessage(result);
+            }}
           />
         </FormGroup>
         <FormGroup>

@@ -66,7 +66,9 @@ export default function Derivate() {
           <InputNumber onChange={setDerivationIndex} />
         </FormGroup>
       </Form>
-      <Button onClick={derive}>Derive </Button>
+      <Button color="blue" onClick={derive}>
+        Derive{" "}
+      </Button>
       <Modal
         show={showModal}
         onHide={() => {

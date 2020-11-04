@@ -22,6 +22,9 @@ export default function Decryption(props) {
               .then((m) => {
                 setDecipheredMessage(m);
                 setShowModal(true);
+                if (!m.length) {
+                  Alert.error("Decryption failed");
+                }
               })
               .catch((e) => {
                 Alert.error("Something went wrong");
@@ -29,6 +32,9 @@ export default function Decryption(props) {
           } else {
             setDecipheredMessage(message);
             setShowModal(true);
+            if (!message.length) {
+              Alert.error("Decryption failed");
+            }
           }
         }}
       >

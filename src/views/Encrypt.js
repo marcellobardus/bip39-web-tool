@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Container, Form, FormGroup, ControlLabel, FormControl } from "rsuite";
 import Encryption from "../components/Encryption";
 
-
 import { encryptWithPublicKey } from "eth-crypto";
 
 export default function Encrypt() {
@@ -14,7 +13,7 @@ export default function Encrypt() {
     <Container>
       <Form fluid>
         <FormGroup>
-          <ControlLabel>Pub Key</ControlLabel>
+          <ControlLabel>PubKey</ControlLabel>
           <FormControl
             rows={5}
             name="pubkey"
@@ -34,6 +33,7 @@ export default function Encrypt() {
         </FormGroup>
       </Form>
       <Encryption
+        encyptionType="ecdsa"
         triggerFunction={() => {
           return encryptWithPublicKey(pubKey, message).then((sec) =>
             btoa(JSON.stringify(sec))
