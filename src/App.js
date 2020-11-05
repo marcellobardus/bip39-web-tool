@@ -11,6 +11,7 @@ import Decrypt from "./views/Decrypt";
 import Encrypt from "./views/Encrypt";
 
 import Derivate from "./views/Derivate";
+import Mnemonic from "./views/Mnemonic";
 
 function App() {
   return (
@@ -31,6 +32,9 @@ function App() {
         </Route>
         <Route path="/derivate">
           <Derivate />
+        </Route>
+        <Route path="/mnemonic">
+          <Mnemonic />
         </Route>
         <Route path="/">
           <Decrypt />
