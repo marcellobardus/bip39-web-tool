@@ -22,7 +22,7 @@ export default function ScanButton(props) {
   };
 
   return (
-    <div>
+    <div style={{ marginTop: "10px" }}>
       <IconButton
         icon={<Icon icon="qrcode" />}
         appearance="primary"

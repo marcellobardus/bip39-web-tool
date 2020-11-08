@@ -11,7 +11,7 @@ export default function AesEncrypt() {
 
   return (
     <Container>
-      <Form fluid>
+      <Form fluid style={{ margin: "5%" }}>
         <FormGroup>
           <ControlLabel>Message</ControlLabel>
           <FormControl
@@ -31,7 +31,7 @@ export default function AesEncrypt() {
         </FormGroup>
       </Form>
       <Encryption
-        encyptionType='aes'
+        encyptionType="aes"
         triggerFunction={() => {
           return AES.encrypt(message, encryptionKey).toString();
         }}

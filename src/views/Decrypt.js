@@ -12,7 +12,7 @@ export default function Decrypt() {
 
   return (
     <Container>
-      <Form fluid>
+      <Form fluid style={{ margin: "5%" }}>
         <FormGroup>
           <ControlLabel>PrivKey</ControlLabel>
           <FormControl

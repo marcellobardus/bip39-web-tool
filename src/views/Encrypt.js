@@ -11,7 +11,7 @@ export default function Encrypt() {
 
   return (
     <Container>
-      <Form fluid>
+      <Form fluid style={{ margin: "5%" }}>
         <FormGroup>
           <ControlLabel>PubKey</ControlLabel>
           <FormControl

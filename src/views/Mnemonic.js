@@ -30,7 +30,7 @@ export default function Mnemonic() {
 
   return (
     <Container>
-      <Button color="blue" onClick={handleClick}>
+      <Button color="blue" onClick={handleClick} style={{ margin: "20%" }}>
         Generate
       </Button>
       <Modal
@@ -42,7 +42,9 @@ export default function Mnemonic() {
         <Modal.Header>Your Mnemonic</Modal.Header>
         <Modal.Body>
           <p>{"Mnemonic: " + secrets.mnemonic}</p>
+          <br />
           <p>{"Xpriv: " + secrets.xpriv}</p>
+          <br />
           <p>{"Xpub: " + secrets.xpub}</p>
         </Modal.Body>
         <Modal.Footer>

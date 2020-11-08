@@ -12,7 +12,7 @@ export default function AesDecrypt() {
 
   return (
     <Container>
-      <Form fluid>
+      <Form fluid style={{ margin: "5%" }}>
         <FormGroup>
           <ControlLabel>Ciphered message</ControlLabel>
           <FormControl

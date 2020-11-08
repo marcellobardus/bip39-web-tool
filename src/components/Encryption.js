@@ -17,6 +17,7 @@ export default function Encryption(props) {
   return (
     <div>
       <Button
+        style={{ margin: "5%" }}
         color="blue"
         onClick={() => {
           const message = triggerFunction();
