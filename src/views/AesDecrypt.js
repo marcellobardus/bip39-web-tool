@@ -11,8 +11,10 @@ export default function AesDecrypt() {
   const [decryptionKey, setDecryptionKey] = useState("");
 
   return (
-    <Container>
-      <Form fluid style={{ margin: "5%" }}>
+    <Container
+      style={{ maxWidth: "70vw", marginLeft: "15vw", marginTop: "4vh" }}
+    >
+      <Form fluid>
         <FormGroup>
           <ControlLabel>Ciphered message</ControlLabel>
           <FormControl
