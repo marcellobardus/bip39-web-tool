@@ -1,13 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { Nav, Navbar, Icon } from "rsuite";
+import { Nav, Navbar, Icon, Sidenav } from "rsuite";
+
+const panelStyles = {
+  padding: "15px 20px",
+  color: "#aaa",
+};
 
 export default function Navigation() {
+  const [expanded, setExpanded] = useState(false);
   return (
     <div>
-      <Navbar>
-        <Navbar.Body>
+      <Icon
+        style={{ alignSelf: "center" }}
+        icon="arrow-circle-o-right"
+        onClick={() => {
+          setExpanded(!expanded);
+        }}
+      />
+      <Sidenav
+        expanded={expanded}
+        defaultOpenKeys={["1", "2"]}
+        activeKey={"1"}
+        appearance={"subtle"}
+        style={{ height: "100vh", position: "absolute" }}
+      >
+        <Sidenav.Body>
           <Nav>
             <Nav.Item eventKey="1" icon={<Icon icon="eye" />}>
               <Link to={"/aes-decrypt"}> AES-Decrypt </Link>
@@ -28,8 +47,8 @@ export default function Navigation() {
               <Link to={"/mnemonic"}> Mnemonic </Link>
             </Nav.Item>
           </Nav>
-        </Navbar.Body>
-      </Navbar>
+        </Sidenav.Body>
+      </Sidenav>
     </div>
   );
 }

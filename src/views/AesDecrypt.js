@@ -14,7 +14,7 @@ export default function AesDecrypt() {
     <Container
       style={{ maxWidth: "70vw", marginLeft: "15vw", marginTop: "4vh" }}
     >
-      <Form fluid>
+      <Form style={{ margin: "10%" }}>
         <FormGroup>
           <ControlLabel>Ciphered message</ControlLabel>
           <FormControl

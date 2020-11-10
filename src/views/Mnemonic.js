@@ -29,7 +29,9 @@ export default function Mnemonic() {
   };
 
   return (
-    <Container>
+    <Container
+      style={{ maxWidth: "70vw", marginLeft: "15vw", marginTop: "4vh" }}
+    >
       <Button color="blue" onClick={handleClick} style={{ margin: "20%" }}>
         Generate
       </Button>

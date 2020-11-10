@@ -50,7 +50,9 @@ export default function Derivate() {
   };
 
   return (
-    <Container>
+    <Container
+      style={{ maxWidth: "70vw", marginLeft: "15vw", marginTop: "4vh" }}
+    >
       <Form fluid style={{ margin: "5%" }}>
         <FormGroup>
           <ControlLabel>Extended Key</ControlLabel>

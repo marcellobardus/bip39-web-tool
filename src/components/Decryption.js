@@ -13,6 +13,7 @@ export default function Decryption(props) {
   return (
     <div>
       <Button
+        style={{ marginTop: "20px" }}
         color="blue"
         onClick={() => {
           const message = triggerFunction();

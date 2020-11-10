@@ -10,8 +10,10 @@ export default function Encrypt() {
   const [message, setMessage] = useState("");
 
   return (
-    <Container>
-      <Form fluid style={{ margin: "5%" }}>
+    <Container
+      style={{ maxWidth: "70vw", marginLeft: "15vw", marginTop: "4vh" }}
+    >
+      <Form>
         <FormGroup>
           <ControlLabel>PubKey</ControlLabel>
           <FormControl
